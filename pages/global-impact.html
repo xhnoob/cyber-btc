@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比特币全球影响 - 赛博启示录</title>
+    <meta name="description" content="探索比特币与全球地缘政治事件的关系">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/global-impact.css">
+    <link rel="stylesheet" href="../assets/css/enhancements.css">
+    <link rel="stylesheet" href="../assets/css/nav-fix.css">
+    <!-- 跨浏览器兼容性修复 -->
+    <link rel="stylesheet" href="../assets/css/cross-browser-fix.css">
+    <!-- 赛博朋克视觉效果恢复 -->
+    <link rel="stylesheet" href="../assets/css/visual-effects-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="global-impact-page">
+    <!-- 视频背景 -->
+    <div class="cyber-background">
+        <video autoplay muted loop id="bgVideo">
+            <source src="../assets/videos/world-grid.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <div class="grid-overlay"></div>
+    </div>
+    
+    <!-- 添加噪点效果 -->
+    <div class="noise-overlay"></div>
+
+    <!-- 导航栏 -->
+    <nav class="cyber-nav">
+        <div class="container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <span class="neon-text">赛博启示录</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">首页</a>
+                <a href="price-analysis.html">价格分析</a>
+                <a href="global-impact.html" class="active">全球影响</a>
+                <a href="institutional.html">机构投资</a>
+                <a href="tech-advancement.html">技术发展</a>
+            </div>
+            <div class="nav-price">
+                <div class="btc-price">BTC: <span id="currentPrice">$--,---</span></div>
+                <div class="price-change" id="priceChange">--.--%</div>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="global-impact-header">
+        <div class="container">
+            <h1 class="page-title neon-text">比特币全球影响</h1>
+            <p class="subtitle">探索数字货币如何影响并受全球地缘政治事件影响</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 全球热点地图部分 -->
+        <section class="global-map-section">
+            <div class="section-title">
+                <h2>比特币全球热点地图</h2>
+                <div class="map-controls">
+                    <button class="map-filter active" data-filter="adoption">采用率</button>
+                    <button class="map-filter" data-filter="regulation">监管状态</button>
+                    <button class="map-filter" data-filter="mining">挖矿分布</button>
+                    <button class="map-filter" data-filter="trading">交易量</button>
+                </div>
+            </div>
+            
+            <div class="hologram-container">
+                <div id="globeVisualization" class="globe-container">
+                    <!-- 3D地球将通过JavaScript渲染 -->
+                    <div class="map-instruction">
+                        <i class="fas fa-mouse-pointer"></i> 将鼠标悬停在热点上查看详细信息
+                    </div>
+                </div>
+                
+                <div class="region-info-panel" id="regionInfo">
+                    <div class="region-header">
+                        <h3 id="regionName">选择一个区域</h3>
+                        <div class="region-status" id="regionStatus"></div>
+                    </div>
+                    <div class="region-data">
+                        <div class="data-item">
+                            <div class="data-label">采用率指数:</div>
+                            <div class="data-value" id="adoptionValue">--</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">监管态度:</div>
+                            <div class="data-value" id="regulationValue">--</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">挖矿哈希率占比:</div>
+                            <div class="data-value" id="miningValue">--</div>
+                        </div>
+                        <div class="data-item">
+                            <div class="data-label">交易量排名:</div>
+                            <div class="data-value" id="tradingValue">--</div>
+                        </div>
+                    </div>
+                    <div class="region-events" id="regionEvents">
+                        <div class="event-item">
+                            <div class="event-date">2023年11月</div>
+                            <div class="event-description">点击热点查看该区域最新比特币相关事件</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="global-legend">
+                <div class="legend-item">
+                    <div class="legend-color high"></div>
+                    <div class="legend-label">高采用率</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color medium"></div>
+                    <div class="legend-label">挖矿中心</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color low"></div>
+                    <div class="legend-label">交易活跃</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color negative"></div>
+                    <div class="legend-label">监管活跃</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 地缘政治事件时间线部分 -->
+        <section class="timeline-section">
+            <div class="section-title">
+                <h2>地缘政治事件与比特币</h2>
+                <div class="timeline-filters">
+                    <button class="timeline-filter active" data-year="all">所有时间</button>
+                    <button class="timeline-filter" data-year="2023">2023</button>
+                    <button class="timeline-filter" data-year="2022">2022</button>
+                    <button class="timeline-filter" data-year="2021">2021</button>
+                    <button class="timeline-filter" data-year="older">更早</button>
+                </div>
+            </div>
+            
+            <div class="timeline-container">
+                <!-- 2023年事件 -->
+                <div class="timeline-event" data-year="2023">
+                    <div class="event-date">2023年11月</div>
+                    <div class="event-content">
+                        <h3>阿根廷选举与比特币政策</h3>
+                        <p>自由主义经济学家米莱当选阿根廷总统，他曾公开支持比特币作为对抗恶性通货膨胀的工具。选举结果公布后，比特币价格短暂上涨3%，阿根廷本地交易所的交易量激增42%。</p>
+                        <div class="event-market-impact positive">市场影响: +3% (短期)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">选举</span>
+                            <span class="event-tag">拉丁美洲</span>
+                            <span class="event-tag">通货膨胀</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-event" data-year="2023">
+                    <div class="event-date">2023年8月</div>
+                    <div class="event-content">
+                        <h3>美国SEC针对加密货币交易所的诉讼</h3>
+                        <p>美国证券交易委员会(SEC)对币安和Coinbase提起诉讼，指控它们未经注册运营证券交易所。诉讼引发了对美国加密货币监管环境的担忧，导致比特币价格在消息公布后的一周内下跌近15%。</p>
+                        <div class="event-market-impact negative">市场影响: -15% (中期)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">监管</span>
+                            <span class="event-tag">美国</span>
+                            <span class="event-tag">法律</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-event" data-year="2023">
+                    <div class="event-date">2023年3月</div>
+                    <div class="event-content">
+                        <h3>美国银行业危机与硅谷银行倒闭</h3>
+                        <p>硅谷银行(SVB)突然倒闭，引发了对传统银行系统稳定性的担忧。这一事件导致投资者寻求替代性资产作为避险，比特币价格在两周内上涨超过30%，突显了其作为传统金融体系对冲工具的潜力。</p>
+                        <div class="event-market-impact positive">市场影响: +30% (中期)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">银行业</span>
+                            <span class="event-tag">金融危机</span>
+                            <span class="event-tag">美国</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2022年事件 -->
+                <div class="timeline-event" data-year="2022">
+                    <div class="event-date">2022年12月</div>
+                    <div class="event-content">
+                        <h3>FTX交易所崩溃及其全球影响</h3>
+                        <p>全球第二大加密货币交易所FTX突然崩溃，引发了全球监管机构的高度关注和市场恐慌。这一事件导致比特币价格在一周内下跌超过25%，并使全球各国加速了加密货币监管框架的制定。</p>
+                        <div class="event-market-impact negative">市场影响: -25% (长期)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">交易所</span>
+                            <span class="event-tag">市场崩溃</span>
+                            <span class="event-tag">监管</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-event" data-year="2022">
+                    <div class="event-date">2022年9月</div>
+                    <div class="event-content">
+                        <h3>以太坊合并与能源消耗辩论</h3>
+                        <p>以太坊完成向权益证明机制的过渡，将其能源消耗降低99%以上。这一转变加剧了对比特币能源使用的批评，并导致一些环保组织和政治实体呼吁采取类似措施。比特币价格在短期内下跌8%，随后稳定。</p>
+                        <div class="event-market-impact negative">市场影响: -8% (短期)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">能源</span>
+                            <span class="event-tag">环境</span>
+                            <span class="event-tag">技术</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-event" data-year="2022">
+                    <div class="event-date">2022年2月</div>
+                    <div class="event-content">
+                        <h3>俄乌冲突与加密货币的地缘政治意义</h3>
+                        <p>俄罗斯入侵乌克兰后，两国均显示出对加密货币的兴趣：乌克兰开始接受加密货币捐款，筹集超过1亿美元资金；同时有报道称俄罗斯可能使用加密货币规避国际制裁。这一事件凸显了比特币作为地缘政治工具的潜力。</p>
+                        <div class="event-market-impact neutral">市场影响: 中性 (波动)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">战争</span>
+                            <span class="event-tag">制裁</span>
+                            <span class="event-tag">捐款</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2021年事件 -->
+                <div class="timeline-event" data-year="2021">
+                    <div class="event-date">2021年9月</div>
+                    <div class="event-content">
+                        <h3>萨尔瓦多将比特币作为法定货币</h3>
+                        <p>萨尔瓦多成为世界上第一个采用比特币作为法定货币的国家，要求所有企业接受比特币支付。这一历史性决定引发了全球对主权国家采用加密货币的讨论，并导致其他拉丁美洲国家表示有类似意向。</p>
+                        <div class="event-market-impact positive">市场影响: +10% (长期)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">法定货币</span>
+                            <span class="event-tag">拉丁美洲</span>
+                            <span class="event-tag">采用</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-event" data-year="2021">
+                    <div class="event-date">2021年5月</div>
+                    <div class="event-content">
+                        <h3>中国全面打击加密货币挖矿</h3>
+                        <p>中国政府宣布全面禁止加密货币挖矿活动，导致全球哈希率在短时间内下降超过50%。这一政策导致了大规模的"挖矿迁徙"，矿工迁移至美国、哈萨克斯坦和俄罗斯等国家，重新分配了全球挖矿分布格局。</p>
+                        <div class="event-market-impact negative">市场影响: -45% (中期)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">挖矿</span>
+                            <span class="event-tag">中国</span>
+                            <span class="event-tag">禁令</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-event" data-year="2021">
+                    <div class="event-date">2021年2月</div>
+                    <div class="event-content">
+                        <h3>特斯拉15亿美元比特币投资</h3>
+                        <p>特斯拉宣布投资15亿美元购买比特币并计划接受比特币作为支付方式，引发了全球对企业采用加密货币趋势的关注。这一举动被视为机构投资者对比特币认可的重要标志，价格在宣布后飙升20%。</p>
+                        <div class="event-market-impact positive">市场影响: +20% (中期)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">企业采用</span>
+                            <span class="event-tag">特斯拉</span>
+                            <span class="event-tag">投资</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 更早的事件 -->
+                <div class="timeline-event" data-year="older">
+                    <div class="event-date">2020年3月</div>
+                    <div class="event-content">
+                        <h3>COVID-19大流行与全球市场崩盘</h3>
+                        <p>COVID-19大流行导致全球市场恐慌性抛售，比特币价格在短短两天内暴跌50%，从8,000美元跌至3,800美元。然而，随后的大规模货币刺激政策和通胀担忧导致比特币价格迅速反弹，年底前达到创纪录的29,000美元。</p>
+                        <div class="event-market-impact negative-positive">市场影响: -50% 随后 +670%</div>
+                        <div class="event-tags">
+                            <span class="event-tag">疫情</span>
+                            <span class="event-tag">市场崩溃</span>
+                            <span class="event-tag">通胀</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-event" data-year="older">
+                    <div class="event-date">2019年10月</div>
+                    <div class="event-content">
+                        <h3>中国国家主席支持区块链技术</h3>
+                        <p>中国国家主席习近平公开表示中国应该"抓住区块链技术发展的机遇"，并将其视为核心技术自主创新的重要突破口。尽管这一声明针对的是区块链而非加密货币，但比特币价格在消息公布后24小时内上涨40%。</p>
+                        <div class="event-market-impact positive">市场影响: +40% (短期)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">区块链</span>
+                            <span class="event-tag">中国</span>
+                            <span class="event-tag">政策</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-event" data-year="older">
+                    <div class="event-date">2013年3月</div>
+                    <div class="event-content">
+                        <h3>塞浦路斯银行业危机</h3>
+                        <p>欧盟对塞浦路斯实施银行存款税，从储户账户中提取资金以救助该国金融系统。这一"存款挤兑"事件导致比特币价格在一个月内从40美元上涨至230美元，标志着比特币首次作为金融危机中的避险资产被广泛认可。</p>
+                        <div class="event-market-impact positive">市场影响: +475% (中期)</div>
+                        <div class="event-tags">
+                            <span class="event-tag">银行业危机</span>
+                            <span class="event-tag">欧盟</span>
+                            <span class="event-tag">避险资产</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 区域焦点分析部分 -->
+        <section class="region-focus-section">
+            <div class="section-title">
+                <h2>区域焦点分析</h2>
+                <p class="section-subtitle">探索不同地区的比特币采用与政策趋势</p>
+            </div>
+            
+            <div class="region-cards">
+                <!-- 北美卡片 -->
+                <div class="region-card">
+                    <div class="region-card-header">
+                        <h3>北美</h3>
+                        <div class="adoption-indicator high">高采用率</div>
+                    </div>
+                    <div class="region-image" style="background-image: url('../assets/images/regions/north-america.jpg');"></div>
+                    <div class="region-card-content">
+                        <p>北美地区拥有最成熟的比特币市场和监管环境，美国与加拿大领先全球比特币ETF批准与制度框架建设。</p>
+                        <ul class="region-highlights">
+                            <li>美国现为全球最大挖矿中心，占全网38%算力</li>
+                            <li>超过2,750万美国人（约10%人口）拥有比特币</li>
+                            <li>加拿大对加密货币采取开放态度，早在2021年批准首个比特币ETF</li>
+                        </ul>
+                        <div class="region-trends">
+                            <div class="trend-item">
+                                <div class="trend-label">监管趋势:</div>
+                                <div class="trend-value positive">逐步明确</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="trend-label">机构采用:</div>
+                                <div class="trend-value positive">快速增长</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="trend-label">政治态度:</div>
+                                <div class="trend-value neutral">两极分化</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 欧洲卡片 -->
+                <div class="region-card">
+                    <div class="region-card-header">
+                        <h3>欧洲</h3>
+                        <div class="adoption-indicator medium">中等采用率</div>
+                    </div>
+                    <div class="region-image" style="background-image: url('../assets/images/regions/europe.jpg');"></div>
+                    <div class="region-card-content">
+                        <p>欧洲呈现出多样化的比特币监管环境，从瑞士和德国的友好政策到部分国家的严格限制不等。</p>
+                        <ul class="region-highlights">
+                            <li>欧盟通过《加密资产市场监管》(MiCA)，创建统一框架</li>
+                            <li>瑞士楚格成为"加密谷"，吸引全球区块链企业</li>
+                            <li>德国允许特别基金(Spezialfonds)投资比特币，释放4,000亿欧元潜在市场</li>
+                        </ul>
+                        <div class="region-trends">
+                            <div class="trend-item">
+                                <div class="trend-label">监管趋势:</div>
+                                <div class="trend-value neutral">逐步规范</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="trend-label">机构采用:</div>
+                                <div class="trend-value neutral">稳步增长</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="trend-label">政治态度:</div>
+                                <div class="trend-value neutral">谨慎开放</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 亚洲卡片 -->
+                <div class="region-card">
+                    <div class="region-card-header">
+                        <h3>亚洲</h3>
+                        <div class="adoption-indicator mixed">政策分化</div>
+                    </div>
+                    <div class="region-image" style="background-image: url('../assets/images/regions/asia.jpg');"></div>
+                    <div class="region-card-content">
+                        <p>亚洲区域内比特币政策差异巨大，从中国的全面禁止到日本、新加坡的积极拥抱，呈现鲜明对比。</p>
+                        <ul class="region-highlights">
+                            <li>中国自2021年起全面禁止加密货币交易和挖矿活动</li>
+                            <li>日本率先承认比特币为合法支付手段，拥有完善监管框架</li>
+                            <li>韩国实施严格的"了解你的客户"(KYC)政策，同时保持市场开放</li>
+                            <li>新加坡定位为区域加密中心，吸引大量交易所迁移</li>
+                        </ul>
+                        <div class="region-trends">
+                            <div class="trend-item">
+                                <div class="trend-label">监管趋势:</div>
+                                <div class="trend-value mixed">高度分化</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="trend-label">交易活跃度:</div>
+                                <div class="trend-value positive">量大且稳定</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="trend-label">政治态度:</div>
+                                <div class="trend-value negative">日益谨慎</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 拉丁美洲卡片 -->
+                <div class="region-card">
+                    <div class="region-card-header">
+                        <h3>拉丁美洲</h3>
+                        <div class="adoption-indicator high">高增长区域</div>
+                    </div>
+                    <div class="region-image" style="background-image: url('../assets/images/regions/latin-america.jpg');"></div>
+                    <div class="region-card-content">
+                        <p>拉丁美洲成为比特币采用的热点地区，主要由通货膨胀和货币不稳定驱动，萨尔瓦多的法定货币实验备受关注。</p>
+                        <ul class="region-highlights">
+                            <li>萨尔瓦多成为全球首个将比特币作为法定货币的国家</li>
+                            <li>阿根廷和委内瑞拉的比特币交易量因恶性通胀创历史新高</li>
+                            <li>巴西批准多个比特币ETF，监管环境相对友好</li>
+                            <li>墨西哥汇款市场开始采用闪电网络解决方案，降低成本</li>
+                        </ul>
+                        <div class="region-trends">
+                            <div class="trend-item">
+                                <div class="trend-label">使用动机:</div>
+                                <div class="trend-value positive">经济保护</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="trend-label">采用趋势:</div>
+                                <div class="trend-value positive">快速增长</div>
+                            </div>
+                            <div class="trend-item">
+                                <div class="trend-label">政治支持:</div>
+                                <div class="trend-value positive">日益增强</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 相关性分析部分 -->
+        <section class="correlation-section">
+            <div class="section-title">
+                <h2>比特币与全球资产相关性</h2>
+                <p class="section-subtitle">探索比特币与传统资产类别在不同地缘政治事件下的相关性变化</p>
+            </div>
+            
+            <div class="correlation-chart-container">
+                <div class="chart-container" id="correlationChartContainer">
+                    <canvas id="correlationChart"></canvas>
+                </div>
+                
+                <div class="correlation-table-container">
+                    <table class="correlation-table">
+                        <thead>
+                            <tr>
+                                <th>资产类别</th>
+                                <th>常态相关性</th>
+                                <th>危机期间</th>
+                                <th>通胀环境</th>
+                                <th>地缘政治冲突</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>美国股市(S&P 500)</td>
+                                <td class="correlation-value positive">0.36</td>
+                                <td class="correlation-value positive">0.82</td>
+                                <td class="correlation-value negative">-0.21</td>
+                                <td class="correlation-value neutral">0.12</td>
+                            </tr>
+                            <tr>
+                                <td>黄金</td>
+                                <td class="correlation-value neutral">0.03</td>
+                                <td class="correlation-value negative">-0.14</td>
+                                <td class="correlation-value positive">0.58</td>
+                                <td class="correlation-value positive">0.41</td>
+                            </tr>
+                            <tr>
+                                <td>美元指数</td>
+                                <td class="correlation-value negative">-0.32</td>
+                                <td class="correlation-value negative">-0.45</td>
+                                <td class="correlation-value negative">-0.65</td>
+                                <td class="correlation-value negative">-0.28</td>
+                            </tr>
+                            <tr>
+                                <td>新兴市场货币</td>
+                                <td class="correlation-value neutral">0.06</td>
+                                <td class="correlation-value negative">-0.38</td>
+                                <td class="correlation-value positive">0.27</td>
+                                <td class="correlation-value positive">0.30</td>
+                            </tr>
+                            <tr>
+                                <td>石油(WTI)</td>
+                                <td class="correlation-value neutral">0.11</td>
+                                <td class="correlation-value neutral">0.15</td>
+                                <td class="correlation-value positive">0.34</td>
+                                <td class="correlation-value positive">0.44</td>
+                            </tr>
+                            <tr>
+                                <td>债券(美国10年期)</td>
+                                <td class="correlation-value negative">-0.12</td>
+                                <td class="correlation-value negative">-0.52</td>
+                                <td class="correlation-value negative">-0.43</td>
+                                <td class="correlation-value neutral">-0.09</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="correlation-insight">
+                    <h3>分析观点</h3>
+                    <p>比特币的相关性特征在不同市场环境中表现不同：在常态市场中，与传统资产相关性较低，显示出分散投资组合风险的潜力；而在市场危机期间，与股票等风险资产相关性提高，表明其作为避险资产的局限性。</p>
+                    <p>然而，在高通胀环境下，比特币与黄金的正相关性增强，支持其作为"数字黄金"的叙事。在地缘政治冲突期间，比特币表现出与受影响地区货币的反向关系，反映其在资本外逃和跨境价值转移中的作用。</p>
+                    <p>这种动态相关性模式表明，比特币在全球金融体系中的定位仍在演变，其功能可能取决于特定的宏观经济条件和地区因素。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="cyber-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>赛博启示录</h3>
+                    <p>深入探索比特币与全球经济的未来</p>
+                </div>
+                <div class="footer-section">
+                    <h3>导航链接</h3>
+                    <ul>
+                        <li><a href="../index.html">首页</a></li>
+                        <li><a href="price-analysis.html">价格分析</a></li>
+                        <li><a href="global-impact.html">全球影响</a></li>
+                        <li><a href="institutional.html">机构投资</a></li>
+                        <li><a href="tech-advancement.html">技术发展</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>声明</h3>
+                    <p>本网站提供的信息仅供参考，不构成投资建议。投资有风险，请谨慎决策。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023-2024 赛博启示录 | <a href="https://github.com/your-username/cyber-btc" target="_blank">GitHub</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 页面过渡动画 -->
+    <div class="page-transition"></div>
+
+    <!-- 脚本 -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/nav-fix.js"></script>
+    <script src="../assets/js/global-impact.js"></script>
+    <!-- 浏览器兼容性修复 -->
+    <script src="../assets/js/edge-fix.js"></script>
+    <!-- 赛博朋克视觉效果增强 -->
+    <script src="../assets/js/visual-effects.js"></script>
+</body>
+</html> 

@@ -1,0 +1,412 @@
+/* 全球影响页面 - Global Impact CSS */
+
+/* 全局变量 */
+:root {
+    --color-map-highlight: rgba(0, 255, 255, 0.7);
+    --color-map-negative: rgba(255, 50, 100, 0.7);
+    --color-map-positive: rgba(0, 255, 150, 0.7);
+    --color-map-neutral: rgba(150, 150, 255, 0.7);
+    --color-timeline-line: rgba(0, 200, 255, 0.5);
+    --color-trading: rgba(255, 170, 0, 0.7);
+    --color-mining: rgba(0, 170, 255, 0.7);
+}
+
+/* 页面头部样式 */
+.global-impact-page .cyber-header {
+    background: linear-gradient(90deg, 
+        rgba(25, 25, 35, 0.7), 
+        rgba(35, 35, 60, 0.5), 
+        rgba(25, 25, 35, 0.7));
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 5px;
+    margin-bottom: 3rem;
+}
+
+/* 区块标题样式 */
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--color-cyber-blue);
+    padding-bottom: 0.5rem;
+}
+
+.section-title h2 {
+    color: var(--color-neon-blue);
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(0, 150, 255, 0.7);
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* 地图部分 */
+.global-map-section {
+    margin-bottom: 4rem;
+    background: rgba(10, 12, 20, 0.7);
+    padding: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 150, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 100, 200, 0.2);
+}
+
+.map-controls {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.map-filter {
+    background: rgba(20, 30, 50, 0.7);
+    color: var(--color-text-light);
+    border: 1px solid var(--color-cyber-blue);
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.map-filter.active, .map-filter:hover {
+    background: rgba(0, 100, 200, 0.3);
+    color: var(--color-white);
+    box-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+}
+
+/* 地球容器样式增强 */
+.globe-container {
+    position: relative;
+    height: 500px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-neon-blue);
+    border-radius: 5px;
+    background: rgba(5, 10, 20, 0.6);
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.3);
+    overflow: hidden;
+}
+
+.globe-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+}
+
+.hologram-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+    .hologram-container {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+    
+    .globe-container {
+        flex: 3;
+    }
+    
+    .region-info-panel {
+        flex: 1;
+    }
+}
+
+/* 区域信息面板 */
+.region-info-panel {
+    background: rgba(10, 20, 35, 0.8);
+    border: 1px solid var(--color-cyber-blue);
+    border-radius: 5px;
+    padding: 1.2rem;
+    height: auto;
+    min-height: 300px;
+    box-shadow: 0 0 15px rgba(0, 150, 255, 0.2);
+    transition: all 0.3s ease;
+    opacity: 0.8;
+    transform: translateY(10px);
+}
+
+.region-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(0, 150, 255, 0.3);
+}
+
+.region-header h3 {
+    color: var(--color-neon-blue);
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.region-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.region-status.high {
+    background: rgba(0, 255, 150, 0.2);
+    color: var(--color-map-positive);
+    border: 1px solid rgba(0, 255, 150, 0.3);
+}
+
+.region-status.regulation {
+    background: rgba(255, 50, 100, 0.2);
+    color: var(--color-map-negative);
+    border: 1px solid rgba(255, 50, 100, 0.3);
+}
+
+.region-status.mining {
+    background: rgba(0, 170, 255, 0.2);
+    color: var(--color-mining);
+    border: 1px solid rgba(0, 170, 255, 0.3);
+}
+
+.region-status.trading {
+    background: rgba(255, 170, 0, 0.2);
+    color: var(--color-trading);
+    border: 1px solid rgba(255, 170, 0, 0.3);
+}
+
+.region-data {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem;
+    background: rgba(0, 30, 60, 0.3);
+    border-radius: 4px;
+}
+
+.data-label {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+}
+
+.data-value {
+    color: var(--color-white);
+    font-weight: 500;
+    font-family: var(--font-mono);
+}
+
+.region-events {
+    margin-top: 1.2rem;
+    border-top: 1px solid rgba(0, 150, 255, 0.3);
+    padding-top: 1rem;
+}
+
+.event-item {
+    padding: 0.6rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px dashed rgba(100, 150, 255, 0.2);
+}
+
+.event-date {
+    color: var(--color-neon-blue);
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.event-description {
+    color: var(--color-text-light);
+}
+
+/* 全球图例 */
+.global-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(5, 15, 30, 0.6);
+    border-radius: 5px;
+    border: 1px solid rgba(0, 150, 255, 0.2);
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+}
+
+.legend-color {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}
+
+.legend-color.high {
+    background: var(--color-map-positive);
+    box-shadow: 0 0 8px var(--color-map-positive);
+}
+
+.legend-color.medium {
+    background: var(--color-mining);
+    box-shadow: 0 0 8px var(--color-mining);
+}
+
+.legend-color.low {
+    background: var(--color-trading);
+    box-shadow: 0 0 8px var(--color-trading);
+}
+
+.legend-color.positive {
+    background: var(--color-map-positive);
+    box-shadow: 0 0 8px var(--color-map-positive);
+}
+
+.legend-color.negative {
+    background: var(--color-map-negative);
+    box-shadow: 0 0 8px var(--color-map-negative);
+}
+
+.legend-color.neutral {
+    background: var(--color-map-neutral);
+    box-shadow: 0 0 8px var(--color-map-neutral);
+}
+
+.legend-label {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+}
+
+/* 地图交互说明 */
+.map-instruction {
+    text-align: center;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    border: 1px dashed rgba(0, 150, 255, 0.3);
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 1200px) {
+    .globe-container {
+        height: 450px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .globe-container {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .globe-container {
+        height: 350px;
+    }
+    
+    .map-controls {
+        justify-content: center;
+        margin-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .globe-container {
+        height: 300px;
+    }
+    
+    .map-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .map-filter {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* 热点动画 */
+@keyframes pulse {
+    0% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+/* 热点信息面板样式 */
+#hotspotInfo {
+    background: rgba(10, 20, 35, 0.9);
+    border: 1px solid var(--color-cyber-blue);
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    color: var(--color-white);
+    max-width: 300px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    z-index: 100;
+}
+
+#hotspotInfo.visible {
+    display: block !important;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+}
+
+.hotspot-header {
+    background: rgba(0, 140, 140, 0.6);
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.hotspot-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--color-white);
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+}
+
+.hotspot-close {
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--color-white);
+    transition: color 0.2s;
+}
+
+.hotspot-close:hover {
+    color: var(--color-cyber-pink);
+}
+
+.hotspot-content {
+    padding: 15px;
+    line-height: 1.5;
+    font-size: 14px;
+    color: var(--color-text-light);
+} 

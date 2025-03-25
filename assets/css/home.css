@@ -1,0 +1,611 @@
+/* 首页特定样式 */
+
+/* 视频背景 */
+.cyber-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.cyber-background video {
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(10, 10, 18, 0.8), rgba(10, 10, 18, 0.4)), 
+              linear-gradient(90deg, rgba(176, 38, 255, 0.2), transparent),
+              linear-gradient(270deg, rgba(0, 255, 255, 0.2), transparent);
+}
+
+/* 头部样式 */
+.cyber-header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.cyber-header .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.subtitle {
+  font-family: var(--font-subheading);
+  color: var(--color-white);
+  font-size: 24px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* 价格容器 */
+.price-container {
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  padding: 20px 40px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin-top: 40px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  min-width: 300px;
+}
+
+.price-container:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-purple));
+  animation: scan-line 2s infinite linear;
+}
+
+.price-header {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--color-white);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.price-value {
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--color-neon-blue);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  transition: all 0.3s;
+}
+
+.price-update {
+  animation: price-flash 0.5s;
+}
+
+@keyframes price-flash {
+  0%, 100% {
+    color: var(--color-neon-blue);
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  }
+  50% {
+    color: var(--color-white);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+  }
+}
+
+.price-change-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.price-change-label {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--color-white);
+  margin-right: 8px;
+}
+
+.price-change-value {
+  font-family: var(--font-mono);
+  font-size: 18px;
+}
+
+.price-change-value.positive {
+  color: var(--color-matrix-green);
+}
+
+.price-change-value.negative {
+  color: var(--color-cyber-pink);
+}
+
+.price-updated {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-white);
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+/* 滚动指示器 */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  opacity: 0.7;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.scroll-indicator i {
+  margin-top: 8px;
+  font-size: 20px;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.scroll-indicator:hover {
+  opacity: 1;
+  color: var(--color-neon-blue);
+}
+
+/* 全息图表区域 */
+.hologram-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.hologram-section .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hologram-container {
+  position: relative;
+  width: 48%;
+  height: 400px;
+  margin-bottom: 30px;
+  background: rgba(10, 12, 20, 0.7);
+  border: 1px solid var(--color-neon-blue);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+.enter-button-container {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.enter-matrix-button {
+  position: relative;
+  padding: 15px 30px;
+  background: transparent;
+  border: 2px solid var(--color-neon-purple);
+  color: var(--color-neon-purple);
+  font-family: var(--font-subheading);
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s;
+  z-index: 1;
+  box-shadow: 0 0 15px rgba(176, 38, 255, 0.5);
+}
+
+.enter-matrix-button:hover {
+  color: var(--color-white);
+  box-shadow: 0 0 25px rgba(176, 38, 255, 0.8);
+}
+
+.enter-matrix-button .button-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(176, 38, 255, 0.5), transparent);
+  transition: all 0.6s;
+  z-index: -1;
+}
+
+.enter-matrix-button:hover .button-glow {
+  left: 100%;
+}
+
+/* 内容预览部分 */
+.content-preview-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.content-preview-section .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--color-neon-purple);
+  text-shadow: 0 0 10px rgba(176, 38, 255, 0.8);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.cyber-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.cyber-card {
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s;
+  height: 100%;
+  cursor: pointer;
+}
+
+.cyber-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 255, 255, 0.4);
+}
+
+.card-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: var(--color-neon-blue);
+  transition: all 0.3s;
+}
+
+.cyber-card:hover .card-icon {
+  transform: scale(1.2);
+  color: var(--color-neon-purple);
+}
+
+.card-title {
+  font-family: var(--font-subheading);
+  font-size: 24px;
+  color: var(--color-white);
+  margin-bottom: 15px;
+}
+
+.card-description {
+  color: var(--color-white);
+  opacity: 0.8;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.card-link {
+  font-family: var(--font-mono);
+  color: var(--color-neon-blue);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.card-link i {
+  margin-left: 8px;
+  transition: transform 0.3s;
+}
+
+.card-link:hover {
+  color: var(--color-neon-purple);
+}
+
+.card-link:hover i {
+  transform: translateX(5px);
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+  .hologram-container {
+    width: 100%;
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cyber-header {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  
+  .price-value {
+    font-size: 36px;
+  }
+  
+  .price-container {
+    padding: 15px 25px;
+  }
+  
+  .hologram-section {
+    padding: 40px 0;
+  }
+  
+  .content-preview-section {
+    padding: 40px 0;
+  }
+  
+  .section-title {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+  
+  .enter-matrix-button {
+    font-size: 20px;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .price-container {
+    width: 90%;
+    padding: 15px;
+  }
+  
+  .price-value {
+    font-size: 30px;
+  }
+  
+  .card-icon {
+    font-size: 36px;
+  }
+  
+  .card-title {
+    font-size: 20px;
+  }
+}
+
+/* 图表部分 */
+.chart-section {
+  padding: 60px 0;
+  background: rgba(0, 10, 20, 0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  font-family: var(--font-display);
+  letter-spacing: 2px;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.hologram-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 20, 40, 0.6);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+}
+
+#priceChart3D {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.chart-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.time-button {
+  background: rgba(10, 30, 50, 0.7);
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 200, 255, 0.3);
+  padding: 8px 15px;
+  margin: 0 5px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.time-button:hover,
+.time-button.active {
+  background: rgba(0, 100, 130, 0.6);
+  color: white;
+  border-color: rgba(0, 255, 255, 0.7);
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+}
+
+.chart-description {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* 世界地图部分 */
+.world-map-section {
+  margin-bottom: 6rem;
+  position: relative;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  margin-bottom: 1.5rem;
+}
+
+#worldMapContainer {
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 15, 30, 0.5);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 热点信息样式 */
+#hotspotInfo {
+  position: absolute;
+  display: none;
+  width: 300px;
+  background: rgba(10, 20, 35, 0.9);
+  border: 1px solid var(--color-cyber-blue);
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  z-index: 10;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+#hotspotInfo.visible {
+  display: block;
+  opacity: 1;
+}
+
+.hotspot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 140, 140, 0.6);
+  padding: 10px 15px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.hotspot-header h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.7);
+}
+
+.hotspot-close {
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+  transition: color 0.2s ease;
+}
+
+.hotspot-close:hover {
+  color: var(--color-cyber-pink);
+}
+
+.hotspot-content {
+  padding: 15px;
+  color: var(--color-text-light);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* 添加地图指示信息 */
+.map-instruction {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 20, 40, 0.7);
+  color: var(--color-cyber-blue);
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  pointer-events: none;
+  z-index: 10;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  animation: pulsate 2s infinite;
+}
+
+@keyframes pulsate {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+  }
+} 

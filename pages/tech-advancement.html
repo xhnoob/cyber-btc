@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比特币技术发展 - 赛博启示录</title>
+    <meta name="description" content="追踪比特币协议和闪电网络的技术发展与创新">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/tech-advancement.css">
+    <link rel="stylesheet" href="../assets/css/enhancements.css">
+    <link rel="stylesheet" href="../assets/css/nav-fix.css">
+    <!-- 跨浏览器兼容性修复 -->
+    <link rel="stylesheet" href="../assets/css/cross-browser-fix.css">
+    <!-- 赛博朋克视觉效果恢复 -->
+    <link rel="stylesheet" href="../assets/css/visual-effects-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="tech-advancement-page">
+    <!-- 视频背景 -->
+    <div class="cyber-background">
+        <video autoplay muted loop id="bgVideo">
+            <source src="../assets/videos/tech-circuit.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <div class="grid-overlay"></div>
+    </div>
+    
+    <!-- 添加噪点效果 -->
+    <div class="noise-overlay"></div>
+
+    <!-- 导航栏 -->
+    <nav class="cyber-nav">
+        <div class="container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <span class="neon-text">赛博启示录</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">首页</a>
+                <a href="price-analysis.html">价格分析</a>
+                <a href="global-impact.html">全球影响</a>
+                <a href="institutional.html">机构投资</a>
+                <a href="tech-advancement.html" class="active">技术发展</a>
+            </div>
+            <div class="nav-price">
+                <div class="btc-price">BTC: <span id="currentPrice">$--,---</span></div>
+                <div class="price-change" id="priceChange">--.--%</div>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="tech-advancement-header">
+        <div class="container">
+            <h1 class="page-title neon-text">比特币技术发展</h1>
+            <p class="subtitle">探索协议升级、闪电网络进展与技术创新</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 网络健康指标部分 -->
+        <section class="network-health-section">
+            <div class="section-title">
+                <h2>网络健康指标</h2>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="metric-title">节点数量</div>
+                    <div class="metric-value">15,620</div>
+                    <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i> +8.2% (30天)
+                    </div>
+                    <div class="metric-chart" id="nodesChart"></div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-hammer"></i>
+                    </div>
+                    <div class="metric-title">哈希率</div>
+                    <div class="metric-value">512.8 EH/s</div>
+                    <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i> +12.5% (30天)
+                    </div>
+                    <div class="metric-chart" id="hashrateChart"></div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="metric-title">难度</div>
+                    <div class="metric-value">75.4 T</div>
+                    <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i> +9.8% (30天)
+                    </div>
+                    <div class="metric-chart" id="difficultyChart"></div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="metric-title">每日交易量</div>
+                    <div class="metric-value">372,845</div>
+                    <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i> +5.3% (30天)
+                    </div>
+                    <div class="metric-chart" id="txVolumeChart"></div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="metric-title">Taproot采用率</div>
+                    <div class="metric-value">38.6%</div>
+                    <div class="metric-change positive">
+                        <i class="fas fa-arrow-up"></i> +4.2% (30天)
+                    </div>
+                    <div class="metric-chart" id="taprootChart"></div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-memory"></i>
+                    </div>
+                    <div class="metric-title">内存池大小</div>
+                    <div class="metric-value">12.5 MB</div>
+                    <div class="metric-change negative">
+                        <i class="fas fa-arrow-down"></i> -8.4% (30天)
+                    </div>
+                    <div class="metric-chart" id="mempoolChart"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技术发展时间线部分 -->
+        <section class="tech-timeline-section">
+            <div class="section-title">
+                <h2>比特币技术发展时间线</h2>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-track"></div>
+                
+                <!-- 2009 - 创世 -->
+                <div class="timeline-event">
+                    <div class="event-date">2009年1月</div>
+                    <div class="event-content">
+                        <h3>创世区块</h3>
+                        <p>中本聪挖出比特币创世区块，并在其中嵌入了《泰晤士报》的标题："财政大臣正在实施第二轮银行援助"，引用这则新闻暗示了比特币作为对传统金融系统的替代方案的意图。</p>
+                        <div class="event-tech-details">
+                            <code>区块高度: 0 | 挖矿奖励: 50 BTC | 难度: 1</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2012 - 首次减半 -->
+                <div class="timeline-event">
+                    <div class="event-date">2012年11月</div>
+                    <div class="event-content">
+                        <h3>首次区块奖励减半</h3>
+                        <p>比特币网络经历首次减半事件，挖矿奖励从每区块50 BTC降至25 BTC。这一事件标志着比特币通货紧缩机制的首次实践，证明了代码可以成功执行这一关键的货币政策。</p>
+                        <div class="event-tech-details">
+                            <code>区块高度: 210,000 | 新挖矿奖励: 25 BTC | 当时价格: $12.35</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2015 - BIP 9 -->
+                <div class="timeline-event">
+                    <div class="event-date">2015年10月</div>
+                    <div class="event-content">
+                        <h3>BIP 9: 版本位表示法</h3>
+                        <p>BIP 9引入了一种新的软分叉部署机制，允许多个软分叉同时激活。这一改进使得比特币网络能够更高效地实施协议升级，减少了升级过程中的冲突和混乱。</p>
+                        <div class="event-tech-details">
+                            <code>提议者: Pieter Wuille, Peter Todd, Greg Maxwell | 状态: 已激活</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2016 - SegWit -->
+                <div class="timeline-event">
+                    <div class="event-date">2016年12月</div>
+                    <div class="event-content">
+                        <h3>隔离见证(SegWit)提议</h3>
+                        <p>SegWit作为BIP141提出，旨在解决交易延展性问题并提高区块容量。这一升级为闪电网络等第二层解决方案奠定了基础，同时也成为比特币社区关于扩容方向的重要讨论点。</p>
+                        <div class="event-tech-details">
+                            <code>BIP: 141, 143, 144, 145 | 提议者: Pieter Wuille等 | 激活时间: 2017年8月</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2018 - Lightning Network -->
+                <div class="timeline-event">
+                    <div class="event-date">2018年3月</div>
+                    <div class="event-content">
+                        <h3>闪电网络主网发布</h3>
+                        <p>闪电网络完成测试并在比特币主网上线，提供了一个可扩展的支付解决方案，允许几乎即时和几乎免费的比特币交易。这标志着比特币扩容策略中的重要一步，遵循"主链安全，上层扩展"的理念。</p>
+                        <div class="event-tech-details">
+                            <code>初始通道: 约1,500个 | 初始容量: 约50 BTC | 协议: BOLT规范</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2021 - Taproot -->
+                <div class="timeline-event">
+                    <div class="event-date">2021年11月</div>
+                    <div class="event-content">
+                        <h3>Taproot升级激活</h3>
+                        <p>Taproot升级在区块高度709,632成功激活，引入了Schnorr签名、Taproot和Tapscript等重要技术改进。这些升级提高了比特币的隐私性、智能合约能力和交易效率，同时降低了复杂交易的手续费。</p>
+                        <div class="event-tech-details">
+                            <code>区块高度: 709,632 | BIP: 340, 341, 342 | 共识: 超过90%矿工支持</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2023 - TARO -->
+                <div class="timeline-event">
+                    <div class="event-date">2023年6月</div>
+                    <div class="event-content">
+                        <h3>TARO协议上线</h3>
+                        <p>基于Taproot的资产协议(TARO)在闪电网络上实现了代币发行和传输功能。这一创新允许在比特币基础层和闪电网络上发行和传输各类数字资产，极大扩展了比特币网络的功能性。</p>
+                        <div class="event-tech-details">
+                            <code>依赖技术: Taproot, 闪电网络 | 开发者: Lightning Labs | 状态: 早期采用</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 未来事件 -->
+                <div class="timeline-event future-event">
+                    <div class="event-date">2024年(预计)</div>
+                    <div class="event-content">
+                        <h3>Schnorr签名批量验证</h3>
+                        <p>社区正在开发基于Schnorr签名的批量验证技术，有望显著提高节点处理交易的效率。这一升级将使节点可以一次性验证多个交易签名，减少CPU使用并提高网络吞吐量。</p>
+                        <div class="event-tech-details">
+                            <code>状态: 开发中 | 预期影响: 验证速度提升5-7倍 | 依赖技术: Schnorr签名</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 闪电网络进展部分 -->
+        <section class="lightning-progress-section">
+            <div class="section-title">
+                <h2>闪电网络进展</h2>
+            </div>
+            
+            <div class="lightning-visualization">
+                <div class="lightning-stats">
+                    <div class="stat-box">
+                        <div class="stat-title">网络容量</div>
+                        <div class="stat-value">5,840 BTC</div>
+                        <div class="stat-change positive">+32.6% (YTD)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">活跃节点</div>
+                        <div class="stat-value">17,520</div>
+                        <div class="stat-change positive">+21.3% (YTD)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">活跃通道</div>
+                        <div class="stat-value">82,640</div>
+                        <div class="stat-change positive">+28.9% (YTD)</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-title">平均通道容量</div>
+                        <div class="stat-value">0.071 BTC</div>
+                        <div class="stat-change positive">+2.8% (YTD)</div>
+                    </div>
+                </div>
+                
+                <div class="network-visualization" id="lightningNetworkViz">
+                    <!-- 三维闪电网络可视化将通过JavaScript加载 -->
+                </div>
+                
+                <div class="lightning-adoption">
+                    <h3>采用亮点</h3>
+                    <div class="adoption-items">
+                        <div class="adoption-item">
+                            <div class="adoption-icon"><i class="fas fa-store"></i></div>
+                            <div class="adoption-content">
+                                <h4>商家采用</h4>
+                                <p>超过25,000家在线商户现已接受闪电网络支付，较去年增长85%。主要类别包括电子商务、游戏和内容订阅服务。</p>
+                            </div>
+                        </div>
+                        <div class="adoption-item">
+                            <div class="adoption-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <div class="adoption-content">
+                                <h4>钱包整合</h4>
+                                <p>主流比特币钱包如BlueWallet、Muun和Phoenix已全面集成闪电网络功能，降低了用户使用门槛。</p>
+                            </div>
+                        </div>
+                        <div class="adoption-item">
+                            <div class="adoption-icon"><i class="fas fa-exchange-alt"></i></div>
+                            <div class="adoption-content">
+                                <h4>交易所支持</h4>
+                                <p>Kraken、OKX和Bitfinex等主要交易所现已支持闪电网络存款和提款，大幅降低了小额交易的手续费。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 协议开发状态部分 -->
+        <section class="protocol-dev-section">
+            <div class="section-title">
+                <h2>协议开发状态</h2>
+                <div class="dev-tabs">
+                    <button class="dev-tab active" data-category="core">核心开发</button>
+                    <button class="dev-tab" data-category="bips">BIPs</button>
+                    <button class="dev-tab" data-category="research">研究项目</button>
+                </div>
+            </div>
+            
+            <div class="dev-content active" id="core-content">
+                <div class="repo-activity">
+                    <h3>Bitcoin Core最新动态</h3>
+                    <p class="version-info">当前版本: 25.0 | 下一版本预计发布: 2024年6月</p>
+                    
+                    <div class="commit-list">
+                        <div class="commit-item">
+                            <div class="commit-date">2024-04-15</div>
+                            <div class="commit-hash">#f8e7a2d</div>
+                            <div class="commit-message">优化UTXO集检索性能，减少内存使用约12%</div>
+                        </div>
+                        <div class="commit-item">
+                            <div class="commit-date">2024-04-12</div>
+                            <div class="commit-hash">#9c56b1e</div>
+                            <div class="commit-message">改进P2P消息处理以降低网络延迟</div>
+                        </div>
+                        <div class="commit-item">
+                            <div class="commit-date">2024-04-08</div>
+                            <div class="commit-hash">#3a5f9d2</div>
+                            <div class="commit-message">为轻客户端验证添加新API端点</div>
+                        </div>
+                        <div class="commit-item">
+                            <div class="commit-date">2024-04-03</div>
+                            <div class="commit-hash">#6d78c4a</div>
+                            <div class="commit-message">修复多个潜在的内存泄漏问题</div>
+                        </div>
+                        <div class="commit-item">
+                            <div class="commit-date">2024-03-29</div>
+                            <div class="commit-hash">#2e1b5f7</div>
+                            <div class="commit-message">实现新的区块模板生成算法，提高矿工收益</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contribution-stats">
+                        <div class="stat-item">
+                            <div class="stat-name">月度提交</div>
+                            <div class="stat-value">168</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-name">活跃贡献者</div>
+                            <div class="stat-value">74</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-name">解决的问题</div>
+                            <div class="stat-value">53</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-name">代码审查</div>
+                            <div class="stat-value">217</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dev-content" id="bips-content">
+                <div class="bips-status">
+                    <h3>比特币改进提案(BIPs)状态</h3>
+                    
+                    <div class="bip-table-container">
+                        <table class="bip-table">
+                            <thead>
+                                <tr>
+                                    <th>BIP #</th>
+                                    <th>标题</th>
+                                    <th>作者</th>
+                                    <th>类型</th>
+                                    <th>状态</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bip-active">
+                                    <td class="bip-number">BIP 340-342</td>
+                                    <td class="bip-title">Taproot/Schnorr/Tapscript</td>
+                                    <td>Pieter Wuille等</td>
+                                    <td>Consensus</td>
+                                    <td class="bip-status active">已激活</td>
+                                </tr>
+                                <tr class="bip-draft">
+                                    <td class="bip-number">BIP 345</td>
+                                    <td class="bip-title">OP_VAULT</td>
+                                    <td>James O'Beirne</td>
+                                    <td>Consensus</td>
+                                    <td class="bip-status draft">草案</td>
+                                </tr>
+                                <tr class="bip-proposed">
+                                    <td class="bip-number">BIP 119</td>
+                                    <td class="bip-title">CHECKTEMPLATEVERIFY</td>
+                                    <td>Jeremy Rubin</td>
+                                    <td>Consensus</td>
+                                    <td class="bip-status proposed">提议中</td>
+                                </tr>
+                                <tr class="bip-draft">
+                                    <td class="bip-number">BIP 322</td>
+                                    <td class="bip-title">Generic Signed Message Format</td>
+                                    <td>Karl-Johan Alm</td>
+                                    <td>Standards</td>
+                                    <td class="bip-status draft">草案</td>
+                                </tr>
+                                <tr class="bip-draft">
+                                    <td class="bip-number">BIP 352</td>
+                                    <td class="bip-title">Silent Payments</td>
+                                    <td>Josie Baker等</td>
+                                    <td>Standards</td>
+                                    <td class="bip-status draft">草案</td>
+                                </tr>
+                                <tr class="bip-draft">
+                                    <td class="bip-number">BIP 118</td>
+                                    <td class="bip-title">SIGHASH_ANYPREVOUT</td>
+                                    <td>Christian Decker等</td>
+                                    <td>Consensus</td>
+                                    <td class="bip-status draft">草案</td>
+                                </tr>
+                                <tr class="bip-rejected">
+                                    <td class="bip-number">BIP 101</td>
+                                    <td class="bip-title">Increase block size limit</td>
+                                    <td>Gavin Andresen</td>
+                                    <td>Consensus</td>
+                                    <td class="bip-status rejected">已拒绝</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dev-content" id="research-content">
+                <div class="research-projects">
+                    <h3>当前研究重点领域</h3>
+                    
+                    <div class="research-grid">
+                        <div class="research-card">
+                            <div class="research-icon"><i class="fas fa-signature"></i></div>
+                            <h4>Schnorr多签优化</h4>
+                            <p>研究通过使用MuSig2协议优化多签名交易，减少多签交易的大小和复杂性，同时提高隐私性。目前已进入最终测试阶段，有望在未来12个月内集成到主要钱包。</p>
+                            <div class="research-links">
+                                <a href="#" class="research-link">技术规范</a>
+                                <a href="#" class="research-link">实现进展</a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-card">
+                            <div class="research-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h4>Covenants约束条件</h4>
+                            <p>开发新的脚本操作码，如OP_VAULT和OP_CHECKTEMPLATEVERIFY，以启用更复杂的比特币智能合约，包括限制UTXO的未来使用方式的能力。这将使得时间锁定储蓄和其他高级使用场景成为可能。</p>
+                            <div class="research-links">
+                                <a href="#" class="research-link">提案比较</a>
+                                <a href="#" class="research-link">用例分析</a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-card">
+                            <div class="research-icon"><i class="fas fa-user-secret"></i></div>
+                            <h4>Silent Payments</h4>
+                            <p>开发实现无需交互的支付协议，允许接收方生成无数量限制的地址而无需存储相应的私钥。这将显著提高比特币的隐私性，同时简化支付流程。</p>
+                            <div class="research-links">
+                                <a href="#" class="research-link">技术白皮书</a>
+                                <a href="#" class="research-link">测试结果</a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-card">
+                            <div class="research-icon"><i class="fas fa-bolt"></i></div>
+                            <h4>闪电网络路由优化</h4>
+                            <p>研究新的支付路由算法，以提高闪电网络中大额支付的成功率和路径发现效率。当前研究显示使用蚁群优化算法可以将路由成功率提高约18%。</p>
+                            <div class="research-links">
+                                <a href="#" class="research-link">算法说明</a>
+                                <a href="#" class="research-link">模拟结果</a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-card">
+                            <div class="research-icon"><i class="fas fa-network-wired"></i></div>
+                            <h4>压缩区块传播</h4>
+                            <p>开发更高效的区块传播协议，如"Compact Blocks 2.0"，以减少网络延迟并提高大区块的传播效率。这将帮助维持网络的去中心化，即使区块大小增加也能确保小型节点的可行性。</p>
+                            <div class="research-links">
+                                <a href="#" class="research-link">协议规范</a>
+                                <a href="#" class="research-link">测试网络</a>
+                            </div>
+                        </div>
+                        
+                        <div class="research-card">
+                            <div class="research-icon"><i class="fas fa-laptop-code"></i></div>
+                            <h4>Simplicity脚本语言</h4>
+                            <p>研究一种功能更强大、更安全的替代脚本语言，用于比特币智能合约。Simplicity旨在提供数学上可验证的脚本，同时保留比特币的安全性和确定性执行特性。</p>
+                            <div class="research-links">
+                                <a href="#" class="research-link">语言规范</a>
+                                <a href="#" class="research-link">示例用例</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="cyber-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>赛博启示录</h3>
+                    <p>深入探索比特币与全球经济的未来</p>
+                </div>
+                <div class="footer-section">
+                    <h3>导航链接</h3>
+                    <ul>
+                        <li><a href="../index.html">首页</a></li>
+                        <li><a href="price-analysis.html">价格分析</a></li>
+                        <li><a href="global-impact.html">全球影响</a></li>
+                        <li><a href="institutional.html">机构投资</a></li>
+                        <li><a href="tech-advancement.html">技术发展</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>声明</h3>
+                    <p>本网站提供的信息仅供参考，不构成投资建议。投资有风险，请谨慎决策。</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023-2024 赛博启示录 | <a href="https://github.com/your-username/cyber-btc" target="_blank">GitHub</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 页面过渡动画 -->
+    <div class="page-transition"></div>
+
+    <!-- 脚本 -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/nav-fix.js"></script>
+    <script src="../assets/js/tech-advancement.js"></script>
+    <!-- 浏览器兼容性修复 -->
+    <script src="../assets/js/edge-fix.js"></script>
+    <!-- 赛博朋克视觉效果增强 -->
+    <script src="../assets/js/visual-effects.js"></script>
+</body>
+</html> 

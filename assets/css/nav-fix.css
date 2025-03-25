@@ -1,0 +1,228 @@
+/**
+ * 导航栏修复CSS
+ * 提供改进的导航栏样式，修复布局问题并添加响应式支持
+ */
+
+/* 导航栏基础样式 */
+.cyber-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(10, 15, 30, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(0, 200, 255, 0.3);
+}
+
+.cyber-nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    height: 60px;
+}
+
+/* 导航栏滚动效果 */
+.cyber-nav.scrolled {
+    background-color: rgba(5, 10, 25, 0.9);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+/* 导航栏Logo */
+.nav-logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform: skew(-5deg);
+    display: inline-block;
+}
+
+.nav-logo .neon-text {
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.8), 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* 导航链接 */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    padding: 0.5rem 0.75rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+}
+
+/* 激活状态 */
+.nav-links a.active {
+    color: rgb(60, 210, 255);
+    font-weight: 600;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.6), rgba(0, 255, 255, 0.8), rgba(0, 255, 255, 0.6), transparent);
+    animation: neonPulse 2s infinite;
+}
+
+/* 价格显示 */
+.nav-price {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    min-width: 120px;
+}
+
+.btc-price {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.price-change {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.price-change.positive {
+    color: rgb(0, 255, 120);
+}
+
+.price-change.negative {
+    color: rgb(255, 80, 100);
+}
+
+/* 汉堡菜单图标 */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* 响应式样式 */
+@media (max-width: 992px) {
+    .cyber-nav .container {
+        padding: 0.75rem 1.5rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .nav-price {
+        min-width: 100px;
+    }
+}
+
+@media (max-width: 768px) {
+    .cyber-nav .container {
+        padding: 0.75rem 1rem;
+    }
+    
+    .menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        flex-direction: column;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: rgba(5, 10, 25, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        gap: 0;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease;
+        border-bottom: 1px solid rgba(0, 200, 255, 0.3);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        visibility: hidden;
+    }
+    
+    .nav-links.active {
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
+    }
+    
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .nav-links a:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-price {
+        min-width: 90px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-logo .neon-text {
+        font-size: 1.2rem;
+    }
+    
+    .nav-price {
+        font-size: 0.8rem;
+    }
+    
+    .cyber-nav .container {
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* 动画效果 */
+@keyframes neonPulse {
+    0%, 100% {
+        opacity: 0.6;
+        box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+    }
+    50% {
+        opacity: 1;
+        box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+    }
+} 

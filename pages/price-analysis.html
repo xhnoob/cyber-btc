@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比特币价格分析 - 赛博启示录</title>
+    <meta name="description" content="深入分析比特币价格走势、技术指标与人工智能预测">
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../assets/css/price-analysis.css">
+    <link rel="stylesheet" href="../assets/css/enhancements.css">
+    <link rel="stylesheet" href="../assets/css/nav-fix.css">
+    <!-- 跨浏览器兼容性修复 -->
+    <link rel="stylesheet" href="../assets/css/cross-browser-fix.css">
+    <!-- 赛博朋克视觉效果恢复 -->
+    <link rel="stylesheet" href="../assets/css/visual-effects-fix.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="price-analysis-page">
+    <!-- 视频背景 -->
+    <div class="cyber-background">
+        <video autoplay muted loop id="bgVideo">
+            <source src="../assets/videos/matrix-numbers.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
+        <div class="grid-overlay"></div>
+    </div>
+    
+    <!-- 添加噪点效果 -->
+    <div class="noise-overlay"></div>
+
+    <!-- 导航栏 -->
+    <nav class="cyber-nav">
+        <div class="container">
+            <div class="nav-logo">
+                <a href="../index.html">
+                    <span class="neon-text">赛博启示录</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">首页</a>
+                <a href="price-analysis.html" class="active">价格分析</a>
+                <a href="global-impact.html">全球影响</a>
+                <a href="institutional.html">机构投资</a>
+                <a href="tech-advancement.html">技术发展</a>
+            </div>
+            <div class="nav-price">
+                <div class="btc-price">BTC: <span id="currentPrice">$--,---</span></div>
+                <div class="price-change" id="priceChange">--.--%</div>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 页面头部 -->
+    <header class="price-analysis-header">
+        <div class="container">
+            <h1 class="page-title neon-text">比特币价格分析</h1>
+            <p class="subtitle">深入解析市场走势、技术指标与未来预测</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 3D价格图表部分 -->
+        <section class="price-chart-section">
+            <div class="section-title">
+                <h2>价格走势</h2>
+                <div class="time-controls">
+                    <button class="time-button active" data-period="1d">1天</button>
+                    <button class="time-button" data-period="1w">1周</button>
+                    <button class="time-button" data-period="1m">1月</button>
+                    <button class="time-button" data-period="3m">3月</button>
+                    <button class="time-button" data-period="1y">1年</button>
+                    <button class="time-button" data-period="all">全部</button>
+                </div>
+            </div>
+            
+            <div class="chart-types">
+                <button class="chart-type-button active" data-type="3d">3D全息图表</button>
+                <button class="chart-type-button" data-type="2d">2D传统图表</button>
+            </div>
+
+            <div class="chart-container hologram-container" id="chart3DContainer">
+                <!-- 3D图表将通过JavaScript渲染 -->
+                <div class="chart-loading">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text">正在加载3D全息图表...</div>
+                </div>
+            </div>
+            
+            <div class="chart-container" id="chart2DContainer" style="display: none;">
+                <canvas id="priceChart"></canvas>
+            </div>
+
+            <div class="price-info">
+                <div class="price-card">
+                    <div class="price-label">当前价格</div>
+                    <div class="price-value" id="currentPriceDisplay">$67,245.32</div>
+                </div>
+                <div class="price-card">
+                    <div class="price-label">24小时变化</div>
+                    <div class="price-value positive" id="24hChange">+2.34%</div>
+                </div>
+                <div class="price-card">
+                    <div class="price-label">24小时交易量</div>
+                    <div class="price-value" id="24hVolume">$42.5B</div>
+                </div>
+                <div class="price-card">
+                    <div class="price-label">市值</div>
+                    <div class="price-value" id="marketCap">$1.32T</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技术指标部分 -->
+        <section class="technical-section">
+            <div class="section-title">
+                <h2>技术指标分析</h2>
+            </div>
+            
+            <div class="indicators-grid">
+                <div class="indicator-box">
+                    <div class="indicator-header">
+                        <h3 class="indicator-title">相对强弱指数 (RSI)</h3>
+                        <div class="indicator-value" id="rsiValue">58.3</div>
+                    </div>
+                    <div class="indicator-chart" id="rsiChart"></div>
+                    <div class="indicator-analysis">
+                        <span class="analysis-label">信号:</span>
+                        <span class="analysis-value neutral">中性</span>
+                        <span class="analysis-note">(区间30-70内)</span>
+                    </div>
+                </div>
+                
+                <div class="indicator-box">
+                    <div class="indicator-header">
+                        <h3 class="indicator-title">移动平均线收敛发散 (MACD)</h3>
+                        <div class="indicator-value" id="macdValue">+124.5</div>
+                    </div>
+                    <div class="indicator-chart" id="macdChart"></div>
+                    <div class="indicator-analysis">
+                        <span class="analysis-label">信号:</span>
+                        <span class="analysis-value positive">看涨</span>
+                        <span class="analysis-note">(MACD线穿越信号线向上)</span>
+                    </div>
+                </div>
+                
+                <div class="indicator-box">
+                    <div class="indicator-header">
+                        <h3 class="indicator-title">布林带 (Bollinger Bands)</h3>
+                        <div class="indicator-value" id="bbValue">中轨+12.4%</div>
+                    </div>
+                    <div class="indicator-chart" id="bbChart"></div>
+                    <div class="indicator-analysis">
+                        <span class="analysis-label">信号:</span>
+                        <span class="analysis-value positive">看涨</span>
+                        <span class="analysis-note">(价格接近上轨)</span>
+                    </div>
+                </div>
+                
+                <div class="indicator-box">
+                    <div class="indicator-header">
+                        <h3 class="indicator-title">随机震荡指标 (Stochastic)</h3>
+                        <div class="indicator-value" id="stochValue">76.2</div>
+                    </div>
+                    <div class="indicator-chart" id="stochChart"></div>
+                    <div class="indicator-analysis">
+                        <span class="analysis-label">信号:</span>
+                        <span class="analysis-value negative">超买</span>
+                        <span class="analysis-note">(高于70水平)</span>
+                    </div>
+                </div>
+                
+                <div class="indicator-box">
+                    <div class="indicator-header">
+                        <h3 class="indicator-title">移动平均线 (MA)</h3>
+                        <div class="indicator-value" id="maValue">50 > 200</div>
+                    </div>
+                    <div class="indicator-chart" id="maChart"></div>
+                    <div class="indicator-analysis">
+                        <span class="analysis-label">信号:</span>
+                        <span class="analysis-value positive">金叉</span>
+                        <span class="analysis-note">(50日均线穿越200日均线向上)</span>
+                    </div>
+                </div>
+                
+                <div class="indicator-box">
+                    <div class="indicator-header">
+                        <h3 class="indicator-title">交易量分析</h3>
+                        <div class="indicator-value" id="volumeValue">+18.3%</div>
+                    </div>
+                    <div class="indicator-chart" id="volumeChart"></div>
+                    <div class="indicator-analysis">
+                        <span class="analysis-label">信号:</span>
+                        <span class="analysis-value positive">看涨</span>
+                        <span class="analysis-note">(价格上涨伴随交易量增加)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="technical-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-title">实时技术指标终端</div>
+                    <div class="terminal-controls">
+                        <div class="terminal-button"></div>
+                        <div class="terminal-button"></div>
+                        <div class="terminal-button"></div>
+                    </div>
+                </div>
+                <div class="terminal-content" id="technicalTerminal">
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="command">loading technical indicators...</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="command">initializing pattern recognition...</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="result success">成功加载所有指标</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="result warning">检测到潜在的头肩底形态，确认度: 76%</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="result">支撑位: $62,450 | 阻力位: $69,880</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="result">VWAP: $66,723 | 日内波动率: 2.8%</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="result success">多个指标显示看涨信号，建议关注 $69,880 阻力位突破情况</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="command">分析比特币持仓分布...</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="result">散户持仓: 减少2.1% | 鲸鱼钱包: 增加3.4%</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="result warning">检测到大额钱包异常积累，可能表明机构兴趣增加</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="command">analyzing_market_sentiment.exe</span></div>
+                    <div class="terminal-line"><span class="prompt">$</span> <span class="result">社交媒体情绪: 中性偏正面 | 恐慌贪婪指数: 65 (贪婪)</span></div>
+                    <div class="terminal-line blinking-cursor"><span class="prompt">$</span> <span class="command">_</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI预测部分 -->
+        <section class="ai-prediction-section">
+            <div class="section-title">
+                <h2>AI预测模型</h2>
+                <p class="section-subtitle">基于机器学习的价格趋势预测</p>
+            </div>
+            
+            <div class="models-container">
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3 class="model-title">LSTM深度学习模型</h3>
+                        <div class="model-accuracy">准确率: 78.3%</div>
+                    </div>
+                    <div class="model-chart-container">
+                        <canvas id="lstmChart"></canvas>
+                    </div>
+                    <div class="model-prediction">
+                        <div class="prediction-time-range">
+                            <span class="time-label">预测区间:</span>
+                            <span class="time-value">30天</span>
+                        </div>
+                        <div class="prediction-result">
+                            <div class="price-range">
+                                <span class="min-price">$65,210</span>
+                                <div class="range-bar">
+                                    <div class="range-fill" style="width: 65%;"></div>
+                                    <div class="current-marker" style="left: 40%;"></div>
+                                </div>
+                                <span class="max-price">$89,750</span>
+                            </div>
+                            <div class="expected-price">
+                                <span class="label">预期价格:</span>
+                                <span class="value">$78,320</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-header">
+                        <h3 class="model-title">情感分析预测模型</h3>
+                        <div class="model-accuracy">准确率: 72.1%</div>
+                    </div>
+                    <div class="model-chart-container">
+                        <canvas id="sentimentChart"></canvas>
+                    </div>
+                    <div class="model-prediction">
+                        <div class="prediction-time-range">
+                            <span class="time-label">预测区间:</span>
+                            <span class="time-value">14天</span>
+                        </div>
+                        <div class="prediction-result">
+                            <div class="sentiment-distribution">
+                                <div class="sentiment-item">
+                                    <span class="sentiment-label">极度看涨</span>
+                                    <div class="sentiment-bar">
+                                        <div class="sentiment-fill" style="width: 28%;"></div>
+                                        <span class="sentiment-value">28%</span>
+                                    </div>
+                                </div>
+                                <div class="sentiment-item">
+                                    <span class="sentiment-label">看涨</span>
+                                    <div class="sentiment-bar">
+                                        <div class="sentiment-fill" style="width: 42%;"></div>
+                                        <span class="sentiment-value">42%</span>
+                                    </div>
+                                </div>
+                                <div class="sentiment-item">
+                                    <span class="sentiment-label">中性</span>
+                                    <div class="sentiment-bar">
+                                        <div class="sentiment-fill" style="width: 18%;"></div>
+                                        <span class="sentiment-value">18%</span>
+                                    </div>
+                                </div>
+                                <div class="sentiment-item">
+                                    <span class="sentiment-label">看跌</span>
+                                    <div class="sentiment-bar">
+                                        <div class="sentiment-fill" style="width: 10%;"></div>
+                                        <span class="sentiment-value">10%</span>
+                                    </div>
+                                </div>
+                                <div class="sentiment-item">
+                                    <span class="sentiment-label">极度看跌</span>
+                                    <div class="sentiment-bar">
+                                        <div class="sentiment-fill" style="width: 2%;"></div>
+                                        <span class="sentiment-value">2%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="cyber-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="neon-text">赛博启示录</span>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html">首页</a>
+                    <a href="price-analysis.html">价格分析</a>
+                    <a href="global-impact.html">全球影响</a>
+                    <a href="institutional.html">机构投资</a>
+                    <a href="tech-advancement.html">技术发展</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 赛博启示录 | 比特币数据分析可视化平台</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 页面过渡动画 -->
+    <div class="page-transition"></div>
+
+    <!-- 脚本 -->
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/nav-fix.js"></script>
+    <script src="../assets/js/price-analysis.js"></script>
+    <!-- 浏览器兼容性修复 -->
+    <script src="../assets/js/edge-fix.js"></script>
+    <!-- 赛博朋克视觉效果增强 -->
+    <script src="../assets/js/visual-effects.js"></script>
+    <script src="../assets/js/debug-helper.js"></script>
+</body>
+</html> 

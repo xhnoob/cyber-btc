@@ -1,0 +1,646 @@
+/* 价格分析页面特定样式 */
+
+/* 页面头部 */
+.price-analysis-header {
+  height: auto;
+  min-height: 200px;
+  padding: 60px 0 30px;
+  position: relative;
+  background: linear-gradient(180deg, rgba(10, 10, 18, 0.9) 0%, rgba(10, 10, 18, 0.6) 100%);
+  border-bottom: 1px solid var(--color-neon-blue);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.page-title {
+  margin-top: 20px;
+  position: relative;
+  display: inline-block;
+  color: var(--color-neon-blue);
+  text-shadow: 0 0 10px var(--color-neon-blue);
+}
+
+.page-title:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-neon-blue), transparent);
+}
+
+.subtitle {
+  margin-top: 15px;
+  font-size: 18px;
+  color: var(--color-light);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 图表部分 */
+.price-chart-section {
+  padding: 30px 0;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.time-controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.time-button {
+  background: transparent;
+  border: 1px solid var(--color-neon-blue);
+  color: var(--color-white);
+  padding: 5px 15px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.time-button:hover, .time-button.active {
+  background: rgba(0, 255, 255, 0.2);
+  color: var(--color-neon-blue);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.chart-types {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.chart-type-button {
+  background: transparent;
+  border: 1px solid var(--color-neon-blue);
+  color: var(--color-white);
+  padding: 8px 15px;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 14px;
+}
+
+.chart-type-button:hover, .chart-type-button.active {
+  background: rgba(0, 255, 255, 0.2);
+  color: var(--color-neon-blue);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+/* 图表容器 */
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  margin-bottom: 30px;
+  border: 1px solid var(--color-neon-blue);
+  background-color: rgba(10, 10, 18, 0.8);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.hologram-container {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 价格信息卡片 */
+.price-info {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.price-card {
+  flex: 1;
+  min-width: 200px;
+  padding: 15px;
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.price-card:hover {
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  transform: translateY(-5px);
+}
+
+.price-label {
+  color: var(--color-light);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.price-value {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--color-neon-blue);
+}
+
+.price-value.positive {
+  color: var(--color-matrix-green);
+}
+
+.price-value.negative {
+  color: var(--color-cyber-pink);
+}
+
+/* 技术指标部分 */
+.technical-section {
+  padding: 30px 0 60px;
+  margin-bottom: 40px;
+}
+
+.indicators-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.indicator-box {
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+.indicator-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.indicator-title {
+  font-size: 16px;
+  margin: 0;
+  color: var(--color-neon-blue);
+}
+
+.indicator-value {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--color-white);
+}
+
+.indicator-chart {
+  height: 120px;
+  margin-bottom: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.indicator-analysis {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.analysis-label {
+  color: var(--color-light);
+}
+
+.analysis-value {
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-weight: 500;
+}
+
+.analysis-value.positive {
+  background: rgba(0, 255, 65, 0.2);
+  color: var(--color-matrix-green);
+}
+
+.analysis-value.negative {
+  background: rgba(255, 42, 109, 0.2);
+  color: var(--color-cyber-pink);
+}
+
+.analysis-value.neutral {
+  background: rgba(255, 255, 0, 0.2);
+  color: #FFFF00;
+}
+
+.analysis-note {
+  color: var(--color-light);
+  opacity: 0.7;
+}
+
+/* 技术指标终端 */
+.technical-terminal {
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid var(--color-matrix-green);
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+}
+
+.terminal-header {
+  background: rgba(0, 10, 0, 0.9);
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-matrix-green);
+}
+
+.terminal-title {
+  color: var(--color-matrix-green);
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.terminal-controls {
+  display: flex;
+  gap: 5px;
+}
+
+.terminal-button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-cyber-pink);
+}
+
+.terminal-button:nth-child(2) {
+  background: #FFFF00;
+}
+
+.terminal-button:nth-child(3) {
+  background: var(--color-matrix-green);
+}
+
+.terminal-content {
+  padding: 15px;
+  height: 300px;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-matrix-green);
+}
+
+.terminal-line {
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.prompt {
+  color: var(--color-matrix-green);
+  font-weight: bold;
+}
+
+.command {
+  color: var(--color-light);
+}
+
+.result {
+  color: var(--color-matrix-green);
+}
+
+.success {
+  color: #00FF41;
+}
+
+.warning {
+  color: #FFFF00;
+}
+
+.error {
+  color: var(--color-cyber-pink);
+}
+
+.blinking-cursor .command:after {
+  content: '|';
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* AI预测部分 */
+.ai-prediction-section {
+  padding: 30px 0 60px;
+}
+
+.section-subtitle {
+  color: var(--color-light);
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.models-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.model-card {
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-purple);
+  padding: 25px;
+  box-shadow: 0 0 20px rgba(176, 38, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.model-card:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/circuit-pattern.svg');
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.model-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(176, 38, 255, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.model-title {
+  color: var(--color-neon-purple);
+  font-size: 18px;
+  margin: 0;
+  text-shadow: 0 0 8px rgba(176, 38, 255, 0.5);
+}
+
+.model-accuracy {
+  background: rgba(176, 38, 255, 0.2);
+  color: var(--color-neon-purple);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.model-chart-container {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(176, 38, 255, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.model-prediction {
+  position: relative;
+  z-index: 1;
+}
+
+.prediction-time-range {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.time-label {
+  color: var(--color-light);
+  font-size: 14px;
+}
+
+.time-value {
+  background: rgba(176, 38, 255, 0.2);
+  color: var(--color-neon-purple);
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.prediction-result {
+  margin-top: 15px;
+}
+
+/* 价格范围样式 */
+.price-range {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.min-price, .max-price {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-light);
+}
+
+.range-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  position: relative;
+}
+
+.range-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-purple));
+  border-radius: 3px;
+}
+
+.current-marker {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--color-white);
+  border-radius: 50%;
+  border: 2px solid var(--color-neon-blue);
+  box-shadow: 0 0 8px var(--color-neon-blue);
+}
+
+.expected-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+.expected-price .label {
+  color: var(--color-light);
+  font-size: 14px;
+}
+
+.expected-price .value {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--color-neon-blue);
+  font-weight: bold;
+}
+
+/* 情感分析分布样式 */
+.sentiment-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sentiment-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sentiment-label {
+  width: 80px;
+  color: var(--color-light);
+  font-size: 14px;
+}
+
+.sentiment-bar {
+  flex: 1;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(176, 38, 255, 0.3);
+  border-radius: 3px;
+  position: relative;
+}
+
+.sentiment-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-neon-blue), var(--color-neon-purple));
+  border-radius: 2px;
+}
+
+.sentiment-item:nth-child(1) .sentiment-fill {
+  background: linear-gradient(90deg, #00ffff, #00ccff);
+}
+
+.sentiment-item:nth-child(2) .sentiment-fill {
+  background: linear-gradient(90deg, #00ccff, #b026ff);
+}
+
+.sentiment-item:nth-child(3) .sentiment-fill {
+  background: linear-gradient(90deg, #ffff00, #ffaa00);
+}
+
+.sentiment-item:nth-child(4) .sentiment-fill {
+  background: linear-gradient(90deg, #ffaa00, #ff2a6d);
+}
+
+.sentiment-item:nth-child(5) .sentiment-fill {
+  background: linear-gradient(90deg, #ff2a6d, #ff0033);
+}
+
+.sentiment-value {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .section-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .time-controls {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  
+  .chart-container {
+    height: 300px;
+  }
+  
+  .price-info {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .price-card {
+    min-width: auto;
+  }
+  
+  .indicators-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .technical-terminal {
+    height: auto;
+  }
+  
+  .terminal-content {
+    height: 200px;
+  }
+  
+  .models-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .sentiment-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .sentiment-label {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  
+  .sentiment-bar {
+    width: 100%;
+  }
+} 

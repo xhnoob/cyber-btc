@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  
+  <!-- 主网格 -->
+  <g stroke="#00ffff" stroke-width="0.5" opacity="0.2">
+    <g id="horizontal-lines">
+      <line x1="0" y1="50" x2="800" y2="50" />
+      <line x1="0" y1="150" x2="800" y2="150" />
+      <line x1="0" y1="250" x2="800" y2="250" />
+      <line x1="0" y1="350" x2="800" y2="350" />
+      <line x1="0" y1="450" x2="800" y2="450" />
+      <line x1="0" y1="550" x2="800" y2="550" />
+      <line x1="0" y1="650" x2="800" y2="650" />
+      <line x1="0" y1="750" x2="800" y2="750" />
+    </g>
+    <g id="vertical-lines">
+      <line x1="50" y1="0" x2="50" y2="800" />
+      <line x1="150" y1="0" x2="150" y2="800" />
+      <line x1="250" y1="0" x2="250" y2="800" />
+      <line x1="350" y1="0" x2="350" y2="800" />
+      <line x1="450" y1="0" x2="450" y2="800" />
+      <line x1="550" y1="0" x2="550" y2="800" />
+      <line x1="650" y1="0" x2="650" y2="800" />
+      <line x1="750" y1="0" x2="750" y2="800" />
+    </g>
+  </g>
+  
+  <!-- 电路元素 -->
+  <g stroke="#00ffff" stroke-width="1" opacity="0.5" filter="url(#glow)">
+    <!-- 左上角电路 -->
+    <path d="M50,50 L150,50 L150,150 L250,150 L250,250" fill="none" />
+    <circle cx="50" cy="50" r="5" fill="#00ffff" opacity="0.8" />
+    <circle cx="150" cy="50" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="150" cy="150" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="250" cy="150" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="250" cy="250" r="5" fill="#00ffff" opacity="0.8" />
+    
+    <!-- 右上角电路 -->
+    <path d="M750,50 L650,50 L650,150 L550,150 L550,250" fill="none" />
+    <circle cx="750" cy="50" r="5" fill="#00ffff" opacity="0.8" />
+    <circle cx="650" cy="50" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="650" cy="150" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="550" cy="150" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="550" cy="250" r="5" fill="#00ffff" opacity="0.8" />
+    
+    <!-- 左下角电路 -->
+    <path d="M50,750 L150,750 L150,650 L250,650 L250,550" fill="none" />
+    <circle cx="50" cy="750" r="5" fill="#00ffff" opacity="0.8" />
+    <circle cx="150" cy="750" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="150" cy="650" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="250" cy="650" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="250" cy="550" r="5" fill="#00ffff" opacity="0.8" />
+    
+    <!-- 右下角电路 -->
+    <path d="M750,750 L650,750 L650,650 L550,650 L550,550" fill="none" />
+    <circle cx="750" cy="750" r="5" fill="#00ffff" opacity="0.8" />
+    <circle cx="650" cy="750" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="650" cy="650" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="550" cy="650" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="550" cy="550" r="5" fill="#00ffff" opacity="0.8" />
+    
+    <!-- 中央电路 -->
+    <path d="M350,350 L450,350 L450,450 L350,450 Z" fill="none" />
+    <circle cx="350" cy="350" r="5" fill="#ff00ff" opacity="0.8" />
+    <circle cx="450" cy="350" r="5" fill="#ff00ff" opacity="0.8" />
+    <circle cx="450" cy="450" r="5" fill="#ff00ff" opacity="0.8" />
+    <circle cx="350" cy="450" r="5" fill="#ff00ff" opacity="0.8" />
+    
+    <!-- 连接线路 -->
+    <path d="M250,250 L350,350" fill="none" stroke-dasharray="5,5" />
+    <path d="M550,250 L450,350" fill="none" stroke-dasharray="5,5" />
+    <path d="M250,550 L350,450" fill="none" stroke-dasharray="5,5" />
+    <path d="M550,550 L450,450" fill="none" stroke-dasharray="5,5" />
+    
+    <!-- 比特币标志 -->
+    <circle cx="400" cy="400" r="30" fill="none" stroke="#ff9900" stroke-width="2" opacity="0.8" />
+    <text x="400" y="405" font-family="Arial" font-size="24" fill="#ff9900" text-anchor="middle" dominant-baseline="middle">₿</text>
+    
+    <!-- 额外的电路元素 -->
+    <path d="M100,200 L200,200 L200,300 L300,300" fill="none" stroke="#00ffff" opacity="0.6" />
+    <path d="M700,200 L600,200 L600,300 L500,300" fill="none" stroke="#00ffff" opacity="0.6" />
+    <path d="M100,600 L200,600 L200,500 L300,500" fill="none" stroke="#00ffff" opacity="0.6" />
+    <path d="M700,600 L600,600 L600,500 L500,500" fill="none" stroke="#00ffff" opacity="0.6" />
+    
+    <!-- 随机点 -->
+    <circle cx="100" cy="200" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="200" cy="200" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="200" cy="300" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="300" cy="300" r="3" fill="#00ffff" opacity="0.8" />
+    
+    <circle cx="700" cy="200" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="600" cy="200" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="600" cy="300" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="500" cy="300" r="3" fill="#00ffff" opacity="0.8" />
+    
+    <circle cx="100" cy="600" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="200" cy="600" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="200" cy="500" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="300" cy="500" r="3" fill="#00ffff" opacity="0.8" />
+    
+    <circle cx="700" cy="600" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="600" cy="600" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="600" cy="500" r="3" fill="#00ffff" opacity="0.8" />
+    <circle cx="500" cy="500" r="3" fill="#00ffff" opacity="0.8" />
+  </g>
+  
+  <!-- 额外的装饰性元素 -->
+  <g stroke="#ff00ff" stroke-width="0.5" opacity="0.3">
+    <circle cx="400" cy="400" r="150" fill="none" />
+    <circle cx="400" cy="400" r="200" fill="none" />
+    <circle cx="400" cy="400" r="250" fill="none" />
+    <circle cx="400" cy="400" r="300" fill="none" />
+  </g>
+</svg> 

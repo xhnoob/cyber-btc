@@ -1,0 +1,380 @@
+/**
+ * 首页布局修复CSS
+ * 解决首页的布局问题，尤其是hero部分
+ */
+
+/* 修复hero部分在Edge中的显示问题 */
+.hero {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  margin-top: 60px; /* 导航栏高度 */
+}
+
+/* 修复价格容器布局 */
+.price-container {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: auto;
+  min-width: 300px;
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  -webkit-box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+          box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  padding: 1.5rem;
+  margin: 2rem auto;
+  z-index: 10;
+}
+
+.price-display {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.price-label {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-white);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.price-value {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--color-neon-blue);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  margin-bottom: 0.25rem;
+}
+
+.price-change {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+}
+
+.price-stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.stat-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-white);
+  opacity: 0.8;
+  margin-bottom: 0.25rem;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--color-neon-purple);
+}
+
+/* 修复分析模块部分 */
+.analysis-modules-section .container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.modules-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1.5rem 1fr 1.5rem 1fr 1.5rem 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+/* 修复模块卡片布局 */
+.module-card {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 2rem;
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  -webkit-box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+          box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+/* 响应式布局修复 */
+@media (max-width: 992px) {
+  .modules-grid {
+    -ms-grid-columns: 1fr 1rem 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 1rem;
+  }
+  
+  .price-stats {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .modules-grid {
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+  }
+  
+  .price-value {
+    font-size: 2rem;
+  }
+}
+
+/* Edge浏览器特定修复 */
+.edge-browser .hero {
+  min-height: 100vh;
+  height: auto;
+  padding-top: 60px;
+}
+
+.edge-browser .price-container {
+  margin: 2rem auto;
+}
+
+.edge-browser .modules-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.edge-browser .module-card {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 calc(25% - 1.5rem);
+          flex: 1 1 calc(25% - 1.5rem);
+  min-width: calc(25% - 1.5rem);
+}
+
+@media (max-width: 992px) {
+  .edge-browser .module-card {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 calc(50% - 1rem);
+            flex: 1 1 calc(50% - 1rem);
+    min-width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .edge-browser .module-card {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+    min-width: 100%;
+  }
+}
+
+/**
+ * 首页布局问题修复样式
+ */
+
+/* 全息图错误显示样式 */
+.webgl-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(20, 30, 40, 0.7);
+  border: 1px solid rgba(255, 50, 50, 0.5);
+  border-radius: 5px;
+  color: #eee;
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+.webgl-error .error-icon {
+  font-size: 2.5rem;
+  color: rgba(255, 100, 100, 0.8);
+  margin-bottom: 15px;
+}
+
+.webgl-error h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: rgba(255, 200, 200, 1);
+}
+
+.webgl-error p {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+/* 热点信息样式改进 */
+.hotspot-info {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 300px;
+  background: rgba(10, 20, 30, 0.85);
+  border: 1px solid rgba(0, 200, 255, 0.5);
+  border-radius: 5px;
+  padding: 15px;
+  color: #eee;
+  transform: translateX(350px);
+  transition: transform 0.3s ease-out;
+  z-index: 10;
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+}
+
+.hotspot-info.visible {
+  transform: translateX(0);
+}
+
+.hotspot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(0, 200, 255, 0.3);
+  padding-bottom: 8px;
+}
+
+.hotspot-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: rgba(0, 255, 255, 0.9);
+}
+
+.hotspot-close {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.7);
+  transition: color 0.3s ease;
+}
+
+.hotspot-close:hover {
+  color: rgba(255, 100, 100, 0.9);
+}
+
+.hotspot-content {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* 价格图表和世界地图容器修复 */
+#priceChart3D, #worldMapContainer {
+  min-height: 400px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* 修复图表控制按钮 */
+.chart-controls {
+  position: relative;
+  z-index: 5;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .hotspot-info {
+    left: 10px;
+    right: 10px;
+    width: calc(100% - 20px);
+    top: auto;
+    bottom: 10px;
+    transform: translateY(150%);
+  }
+  
+  .hotspot-info.visible {
+    transform: translateY(0);
+  }
+  
+  #priceChart3D, #worldMapContainer {
+    min-height: 300px;
+  }
+}
+
+/* 确保全息容器不被其他元素遮挡 */
+.hologram-container {
+  z-index: 2;
+} 

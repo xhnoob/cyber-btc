@@ -1,0 +1,332 @@
+/* 机构投资页面特有样式 */
+
+/* 头部样式 */
+.institutional-header {
+  background: linear-gradient(180deg, rgba(20, 20, 40, 0.8), rgba(10, 10, 20, 0.8));
+  padding: 60px 0 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.institutional-header:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/circuit-pattern.png');
+  opacity: 0.15;
+  z-index: -1;
+}
+
+/* 投资流入图表部分 */
+.investment-flow-section {
+  margin-bottom: 60px;
+}
+
+.flow-chart-container {
+  position: relative;
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  margin-bottom: 30px;
+  min-height: 400px;
+}
+
+.flow-chart-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.flow-tab {
+  padding: 8px 16px;
+  background: rgba(20, 20, 40, 0.7);
+  border: 1px solid var(--color-neon-blue);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.flow-tab:hover, .flow-tab.active {
+  background: var(--color-neon-blue);
+  color: var(--color-dark);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+/* 主要机构投资者部分 */
+.major-investors-section {
+  margin-bottom: 60px;
+}
+
+.investors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.investor-card {
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-purple);
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(176, 38, 255, 0.3);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.investor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(176, 38, 255, 0.4);
+}
+
+.investor-logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  background: rgba(30, 30, 50, 0.6);
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.investor-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}
+
+.investor-name {
+  font-family: var(--font-subheading);
+  font-size: 22px;
+  color: var(--color-white);
+  margin-bottom: 10px;
+}
+
+.investor-details {
+  margin-bottom: 15px;
+}
+
+.investor-detail {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.investor-detail-label {
+  color: var(--color-white);
+  opacity: 0.7;
+}
+
+.investor-detail-value {
+  color: var(--color-neon-blue);
+}
+
+.investor-description {
+  color: var(--color-white);
+  opacity: 0.8;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+/* ETF追踪部分 */
+.etf-tracking-section {
+  margin-bottom: 60px;
+}
+
+.etf-table-container {
+  overflow-x: auto;
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  margin-bottom: 30px;
+}
+
+.etf-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.etf-table th, .etf-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.etf-table th {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-neon-blue);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: normal;
+  background: rgba(0, 255, 255, 0.05);
+}
+
+.etf-table tr:last-child td {
+  border-bottom: none;
+}
+
+.etf-table td {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-white);
+}
+
+.etf-table tr:hover td {
+  background: rgba(0, 255, 255, 0.08);
+}
+
+.etf-name {
+  font-family: var(--font-subheading);
+  font-size: 16px;
+  color: var(--color-white);
+}
+
+.etf-aum {
+  color: var(--color-neon-blue);
+}
+
+.etf-change.positive {
+  color: var(--color-matrix-green);
+}
+
+.etf-change.negative {
+  color: var(--color-cyber-pink);
+}
+
+/* 预测分析部分 */
+.predictions-section {
+  margin-bottom: 60px;
+}
+
+.prediction-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.prediction-card {
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-purple);
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(176, 38, 255, 0.3);
+}
+
+.prediction-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--color-neon-purple);
+}
+
+.prediction-time {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-white);
+  opacity: 0.7;
+  margin-bottom: 15px;
+}
+
+.prediction-title {
+  font-family: var(--font-subheading);
+  font-size: 20px;
+  color: var(--color-white);
+  margin-bottom: 15px;
+}
+
+.prediction-content {
+  color: var(--color-white);
+  opacity: 0.8;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.prediction-impact {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-neon-blue);
+  display: flex;
+  align-items: center;
+}
+
+.prediction-impact i {
+  margin-right: 8px;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+  .investors-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  .prediction-cards {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .institutional-header {
+    padding: 40px 0 30px;
+  }
+  
+  .investment-flow-section,
+  .major-investors-section,
+  .etf-tracking-section,
+  .predictions-section {
+    margin-bottom: 40px;
+  }
+  
+  .flow-chart-container {
+    padding: 15px;
+    min-height: 350px;
+  }
+  
+  .investor-card {
+    padding: 15px;
+  }
+  
+  .investor-name {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flow-tab {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .investor-logo {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .investors-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .prediction-cards {
+    grid-template-columns: 1fr;
+  }
+} 

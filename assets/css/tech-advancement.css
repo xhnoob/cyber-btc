@@ -1,0 +1,469 @@
+/* 技术发展页面特有样式 */
+
+/* 头部样式 */
+.tech-header {
+  background: linear-gradient(180deg, rgba(10, 40, 50, 0.8), rgba(10, 20, 30, 0.8));
+  padding: 60px 0 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.tech-header:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/tech-pattern.png');
+  opacity: 0.15;
+  z-index: -1;
+}
+
+/* 网络指标部分 */
+.network-metrics-section {
+  margin-bottom: 60px;
+}
+
+.metrics-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.metric-card {
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-icon {
+  font-size: 30px;
+  color: var(--color-neon-blue);
+  margin-bottom: 15px;
+}
+
+.metric-title {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--color-white);
+  opacity: 0.8;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-size: 36px;
+  color: var(--color-neon-blue);
+  margin-bottom: 10px;
+}
+
+.metric-change {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.metric-change.positive {
+  color: var(--color-matrix-green);
+}
+
+.metric-change.negative {
+  color: var(--color-cyber-pink);
+}
+
+.metric-change i {
+  margin-right: 5px;
+}
+
+.metric-description {
+  color: var(--color-white);
+  opacity: 0.7;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* 技术发展时间轴部分 */
+.tech-timeline-section {
+  margin-bottom: 60px;
+}
+
+.timeline-container {
+  position: relative;
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  margin-bottom: 30px;
+}
+
+.timeline {
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.timeline:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: var(--color-neon-blue);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  width: 50%;
+  padding: 0 40px 0 0;
+}
+
+.timeline-item:nth-child(even) {
+  margin-left: 50%;
+  padding: 0 0 0 40px;
+}
+
+.timeline-item:before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: -9px;
+  width: 20px;
+  height: 20px;
+  background: var(--color-neon-blue);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+}
+
+.timeline-item:nth-child(even):before {
+  right: auto;
+  left: -9px;
+}
+
+.timeline-content {
+  background: rgba(20, 20, 40, 0.7);
+  padding: 20px;
+  border: 1px solid var(--color-neon-blue);
+  position: relative;
+}
+
+.timeline-content:before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  right: -10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid var(--color-neon-blue);
+}
+
+.timeline-item:nth-child(even) .timeline-content:before {
+  right: auto;
+  left: -10px;
+  border-left: none;
+  border-right: 10px solid var(--color-neon-blue);
+}
+
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-neon-blue);
+  margin-bottom: 10px;
+}
+
+.timeline-title {
+  font-family: var(--font-subheading);
+  font-size: 20px;
+  color: var(--color-white);
+  margin-bottom: 10px;
+}
+
+.timeline-description {
+  color: var(--color-white);
+  opacity: 0.8;
+  margin-bottom: 10px;
+}
+
+.timeline-links {
+  display: flex;
+  gap: 10px;
+}
+
+.timeline-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-neon-blue);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.timeline-link:hover {
+  color: var(--color-neon-purple);
+}
+
+.timeline-link i {
+  margin-right: 5px;
+}
+
+/* 闪电网络部分 */
+.lightning-section {
+  margin-bottom: 60px;
+}
+
+.lightning-container {
+  position: relative;
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-purple);
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(176, 38, 255, 0.3);
+  margin-bottom: 30px;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.lightning-network {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.lightning-info {
+  position: relative;
+  z-index: 1;
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(20, 20, 40, 0.8);
+  border: 1px solid var(--color-neon-purple);
+  max-width: 500px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.info-label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-white);
+  opacity: 0.7;
+}
+
+.info-value {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-neon-purple);
+}
+
+/* 协议开发部分 */
+.protocol-section {
+  margin-bottom: 60px;
+}
+
+.protocol-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.protocol-card {
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid var(--color-neon-blue);
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  transition: all 0.3s;
+}
+
+.protocol-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 255, 255, 0.4);
+}
+
+.protocol-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.protocol-icon {
+  font-size: 24px;
+  color: var(--color-neon-blue);
+  margin-right: 15px;
+}
+
+.protocol-title {
+  font-family: var(--font-subheading);
+  font-size: 20px;
+  color: var(--color-white);
+}
+
+.protocol-status {
+  display: inline-block;
+  padding: 3px 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.protocol-status.active {
+  background: rgba(0, 255, 100, 0.2);
+  color: var(--color-matrix-green);
+  border: 1px solid var(--color-matrix-green);
+}
+
+.protocol-status.proposed {
+  background: rgba(255, 200, 0, 0.2);
+  color: #ffc800;
+  border: 1px solid #ffc800;
+}
+
+.protocol-status.development {
+  background: rgba(0, 150, 255, 0.2);
+  color: #0096ff;
+  border: 1px solid #0096ff;
+}
+
+.protocol-description {
+  color: var(--color-white);
+  opacity: 0.8;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.protocol-features {
+  margin-bottom: 15px;
+}
+
+.protocol-feature {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 8px;
+}
+
+.protocol-feature i {
+  color: var(--color-neon-blue);
+  font-size: 14px;
+  margin-right: 8px;
+}
+
+.protocol-feature-text {
+  color: var(--color-white);
+  opacity: 0.9;
+}
+
+.protocol-link {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--color-neon-blue);
+  display: flex;
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.protocol-link:hover {
+  color: var(--color-neon-purple);
+}
+
+.protocol-link i {
+  margin-left: 8px;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+  .metrics-container {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+  
+  .protocol-cards {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  .timeline:before {
+    left: 40px;
+  }
+  
+  .timeline-item {
+    width: 100%;
+    padding-right: 0;
+    padding-left: 70px;
+  }
+  
+  .timeline-item:nth-child(even) {
+    margin-left: 0;
+    padding: 0 0 0 70px;
+  }
+  
+  .timeline-item:before,
+  .timeline-item:nth-child(even):before {
+    left: 31px;
+    right: auto;
+  }
+  
+  .timeline-content:before,
+  .timeline-item:nth-child(even) .timeline-content:before {
+    right: auto;
+    left: -10px;
+    border-left: none;
+    border-right: 10px solid var(--color-neon-blue);
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-header {
+    padding: 40px 0 30px;
+  }
+  
+  .network-metrics-section,
+  .tech-timeline-section,
+  .lightning-section,
+  .protocol-section {
+    margin-bottom: 40px;
+  }
+  
+  .metric-value {
+    font-size: 30px;
+  }
+  
+  .timeline-container {
+    padding: 20px;
+  }
+  
+  .timeline-title {
+    font-size: 18px;
+  }
+  
+  .lightning-container {
+    min-height: 350px;
+  }
+  
+  .protocol-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .metrics-container {
+    grid-template-columns: 1fr;
+  }
+} 
